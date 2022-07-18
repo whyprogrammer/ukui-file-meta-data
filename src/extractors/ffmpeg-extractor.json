@@ -2,7 +2,7 @@
     "Type" : "UKUI_FILE_META_DATA_EXTRACTOR",
     "Version" : "1.0.0",
     "Name" : "FFMpegExtractor",
-    "Id" :   "org.kde.ffmpegextractor",
+    "Id" :   "org.ukui.ffmpegextractor",
     "MimeTypes" : {
         "video/mp4"        : { "Version" : "0.0" },
         "video/mpeg"       : { "Version" : "0.0" },

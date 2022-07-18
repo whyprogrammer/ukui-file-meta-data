@@ -101,27 +101,28 @@ QDateTime ExtractorPlugin::dateTimeFromString(const QString& dateString)
     return dateTime;
 }
 
+/*
 QStringList ExtractorPlugin::contactsFromString(const QString& string)
 {
     QString cleanedString = string;
     cleanedString = cleanedString.remove(QLatin1Char('{'));
     cleanedString = cleanedString.remove(QLatin1Char('}'));
 
-    QStringList contactStrings = string.split(QLatin1Char(','), Qt::SkipEmptyParts);
+    QStringList contactStrings = string.split(QLatin1Char(','), QString::SkipEmptyParts);
     if (contactStrings.size() == 1) {
-        contactStrings = string.split(QLatin1Char(';'), Qt::SkipEmptyParts);
+        contactStrings = string.split(QLatin1Char(';'), QString::SkipEmptyParts);
     }
 
     if (contactStrings.size() == 1) {
-        contactStrings = string.split(QStringLiteral(" ft "), Qt::SkipEmptyParts);
+        contactStrings = string.split(QStringLiteral(" ft "), QString::SkipEmptyParts);
     }
 
     if (contactStrings.size() == 1) {
-        contactStrings = string.split(QStringLiteral(" feat. "), Qt::SkipEmptyParts);
+        contactStrings = string.split(QStringLiteral(" feat. "), QString::SkipEmptyParts);
     }
 
     if (contactStrings.size() == 1) {
-        contactStrings = string.split(QStringLiteral(" feat "), Qt::SkipEmptyParts);
+        contactStrings = string.split(QStringLiteral(" feat "), QString::SkipEmptyParts);
     }
 
     QStringList list;
@@ -133,6 +134,7 @@ QStringList ExtractorPlugin::contactsFromString(const QString& string)
 
     return list;
 }
+*/
 
 QString ExtractorPlugin::getSupportedMimeType(const QString& mimetype) const
 {

@@ -75,7 +75,7 @@ public:
      * Tries to split the string into names. It cleans up any superfluous words
      * and removes extra junk such as curly braces
      */
-    static QStringList contactsFromString(const QString& string);
+//    static QStringList contactsFromString(const QString& string);
 
 protected:
     /**

@@ -9,8 +9,10 @@
 #include <QDir>
 #include <QJsonObject>
 #include <QJsonValue>
+#include <QDebug>
 #include <QMimeDatabase>
 #include "extractor.h"
+
 using namespace UkuiFileMetaData;
 
 class UkuiFileMetaData::ExtractorManagerPrivate
