@@ -1,6 +1,9 @@
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Test REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
 
+#
+# ffmpeg test
+#
 
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
@@ -20,8 +23,22 @@ target_link_libraries(ffmpegExtractorTest PUBLIC
     ${AVFORMAT_LIBRARIES}
     ${AVUTIL_LIBRARIES}
     )
-
 add_test(ffmpegExtractorTest ${CMAKE_BINARY_DIR}/autotests/ffmpegExtractorTest)
+
+#
+# office(binary) test
+#
+
+add_executable(OfficeExtractorTest
+    ../src/extractors/office-extractor.cpp
+    ../src/extractors/binary-parser.cpp
+    office-extractortest.cpp)
+target_link_libraries(OfficeExtractorTest PUBLIC
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Test
+    UkuiFileMetaData
+    )
+add_test(OfficeExtractortest ${CMAKE_BINARY_DIR}/autotests/OfficeExtractorTest)
 
 
 

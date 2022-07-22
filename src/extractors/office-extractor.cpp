@@ -27,8 +27,8 @@ void OfficeExtractor::extract(ExtractionResult *result)
             suffix == "pps" || suffix == "dps" || suffix == "et" || suffix == "xls") {
         result->addType(Type::Document);
         if (result->inputFlags() & ExtractionResult::ExtractPlainText) {
-            KBinaryParser parser;
             QString contents;
+            KBinaryParser parser;
             parser.RunParser(result->inputUrl(), contents);
             result->append(contents);
         }
