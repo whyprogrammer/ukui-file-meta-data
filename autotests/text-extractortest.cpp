@@ -1,0 +1,31 @@
+#include "text-extractortest.h"
+#include "extractors/text-extractor.h"
+#include "indexerextractortestsconfig.h"
+#include "simple-extraction-result.h"
+#include "mime-utils.h"
+
+#include <QTest>
+
+using namespace UkuiFileMetaData;
+
+QString testFilePath(const QString& name)
+{
+    return QLatin1String(INDEXER_TESTS_SAMPLE_FILES_PATH) + QLatin1Char('/') + name;
+}
+
+void TextExtractorTest::test()
+{
+    TextExtractor plugin{this};
+
+    QString fileName = testFilePath(QStringLiteral("test.txt"));
+    QMimeDatabase mimeDb;
+    QString mimeType = MimeUtils::strictMimeType(fileName, mimeDb).name();
+    QVERIFY(plugin.mimetypes().contains(mimeType));
+
+    SimpleExtractionResult result(fileName, mimeType);
+    plugin.extract(&result);
+
+    QCOMPARE(result.text(), QStringLiteral("This is a test. This is a test. "));
+    QCOMPARE(result.properties().value(Property::LineCount), 2);
+}
+QTEST_GUILESS_MAIN(TextExtractorTest)

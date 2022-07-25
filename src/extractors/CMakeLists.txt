@@ -1,4 +1,6 @@
 include_directories(../)
+include_directories(${POPPLER_INCLUDE_DIRS})
+include_directories(${UCHARDET_INCLUDE_DIRS})
 
 if(AVCODEC_FOUND AND AVFORMAT_FOUND AND AVUTIL_FOUND)
     add_library(ukuifilemetadata_ffmpegextractor MODULE
@@ -28,4 +30,28 @@ target_link_libraries(ukuifilemetadata_officeextractor
 set_target_properties(ukuifilemetadata_officeextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
 install(
     TARGETS ukuifilemetadata_officeextractor
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
+
+#
+#text
+#
+
+add_library(ukuifilemetadata_textextractor MODULE text-extractor.cpp)
+target_link_libraries(ukuifilemetadata_textextractor
+    UkuiFileMetaData)
+set_target_properties(ukuifilemetadata_textextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
+install(
+    TARGETS ukuifilemetadata_textextractor
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
+
+#
+#pdf
+#
+
+add_library(ukuifilemetadata_pdfextractor MODULE pdf-extractor.cpp)
+target_link_libraries(ukuifilemetadata_pdfextractor
+    UkuiFileMetaData)
+set_target_properties(ukuifilemetadata_pdfextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
+install(
+    TARGETS ukuifilemetadata_pdfextractor
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
