@@ -7,6 +7,7 @@
 
 #include "extractor.h"
 #include "extractor-plugin.h"
+#include <QDebug>
 
 using namespace UkuiFileMetaData;
 

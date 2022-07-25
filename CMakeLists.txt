@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
-
+cmake_minimum_required(VERSION 3.16)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -19,8 +18,27 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(CheckStructHasMember)
 
+#Define QT_MAJOR_VERSION
+if (DEFINED QT_MAJOR_VERSION)
+    return()
+endif()
+
+if (TARGET Qt5::Core)
+    set(QT_MAJOR_VERSION 5)
+elseif (TARGET Qt6::Core)
+    set(QT_MAJOR_VERSION 6)
+else()
+    option(BUILD_WITH_QT6 "Build against Qt 6" OFF)
+
+    if (BUILD_WITH_QT6)
+        set(QT_MAJOR_VERSION 6)
+    else()
+        set(QT_MAJOR_VERSION 5)
+    endif()
+endif()
+
 # Dependencies
-set(REQUIRED_QT_VERSION 5.15.2)
+set(REQUIRED_QT_VERSION 5.12.8)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 

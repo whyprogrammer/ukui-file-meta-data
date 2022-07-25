@@ -8,7 +8,7 @@
 #ifndef UKUIFILEMETADATA_PROPERTIES
 #define UKUIFILEMETADATA_PROPERTIES
 
-#include "ukui-file-meta-data_global.h""
+#include "ukui-file-meta-data_global.h"
 
 #include <QMap>
 #include <QVariant>

@@ -1,4 +1,5 @@
 include_directories(../)
+
 if(AVCODEC_FOUND AND AVFORMAT_FOUND AND AVUTIL_FOUND)
     add_library(ukuifilemetadata_ffmpegextractor MODULE
         ffmpeg-extractor.cpp
@@ -16,3 +17,15 @@ if(AVCODEC_FOUND AND AVFORMAT_FOUND AND AVUTIL_FOUND)
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
 
 endif()
+
+#
+#office (binary)
+#
+
+add_library(ukuifilemetadata_officeextractor MODULE office-extractor.cpp binary-parser.cpp)
+target_link_libraries(ukuifilemetadata_officeextractor
+    UkuiFileMetaData)
+set_target_properties(ukuifilemetadata_officeextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
+install(
+    TARGETS ukuifilemetadata_officeextractor
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
