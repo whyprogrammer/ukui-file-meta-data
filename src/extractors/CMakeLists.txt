@@ -33,6 +33,19 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
 
 #
+#office2007
+#
+
+add_library(ukuifilemetadata_office2007extractor MODULE office2007-extractor.cpp)
+target_link_libraries(ukuifilemetadata_office2007extractor
+    UkuiFileMetaData
+    libquazip5.so)
+set_target_properties(ukuifilemetadata_office2007extractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
+install(
+    TARGETS ukuifilemetadata_office2007extractor
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/ukui-file-meta-data/plugins")
+
+#
 #text
 #
 

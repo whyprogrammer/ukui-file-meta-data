@@ -1,6 +1,6 @@
 {
-    "Name" : "TextExtractor",
-    "Id" :   "org.ukui.textextractor",
+    "Name"      : "PdfExtractor",
+    "Id"        : "org.ukui.pdfextractor",
     "MimeTypes" : {
         "application/pdf" : { "Version" : "0.0" }
     }

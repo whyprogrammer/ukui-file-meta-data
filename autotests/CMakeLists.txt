@@ -41,6 +41,21 @@ target_link_libraries(OfficeExtractorTest PUBLIC
 add_test(OfficeExtractortest ${CMAKE_BINARY_DIR}/autotests/OfficeExtractorTest)
 
 #
+# office(2007) test
+#
+
+add_executable(Office2007ExtractorTest
+    ../src/extractors/office2007-extractor.cpp
+    office2007-extractortest.cpp)
+target_link_libraries(Office2007ExtractorTest PUBLIC
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Test
+    UkuiFileMetaData
+    libquazip5.so
+    )
+add_test(Office2007Extractortest ${CMAKE_BINARY_DIR}/autotests/OfficeExtractorTest)
+
+#
 # pdf test
 #
 
