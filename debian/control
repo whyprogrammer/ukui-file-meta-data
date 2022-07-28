@@ -1,0 +1,32 @@
+Source: ukui-file-meta-data
+Section: utils
+Priority: optional
+Maintainer: baijunjie <baijunjie@kylinos.cn>
+Build-Depends: debhelper-compat (= 12),
+               pkgconf,
+               libgsettings-qt-dev,
+               qtbase5-dev,
+               qt5-qmake,
+               qtchooser,
+               qtscript5-dev,
+               qttools5-dev-tools,
+               libquazip5-dev(>=0.7.6-6build1),
+               libuchardet-dev,
+               libpoppler-qt5-dev
+Standards-Version: 4.5.0
+Homepage: https://www.ukui.org/
+#Vcs-Browser: https://salsa.debian.org/debian/ukui-file-meta-data
+#Vcs-Git: https://salsa.debian.org/debian/ukui-file-meta-data.git
+
+Package: ukui-file-meta-data
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: The file metadata of UKUI desktop environment.
+
+Package: ukui-file-meta-data-dev
+Architecture: any
+Section: devel
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: The file metadata of UKUI desktop environment(development files).

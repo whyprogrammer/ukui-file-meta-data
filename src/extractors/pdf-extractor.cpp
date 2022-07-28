@@ -1,3 +1,12 @@
+/*
+    SPDX-FileCopyrightText: 2012 Vishesh Handa <me@vhanda.in>
+    SPDX-FileCopyrightText: 2012 Jörg Ehrichs <joerg.ehrichs@gmx.de>
+    SPDX-FileCopyrightText: 2022 kirito <baijunjie@kylinos.cn>
+
+    SPDX-License-Identifier: LGPL-2.1-or-later
+*/
+
+
 #include "pdf-extractor.h"
 #include <QDebug>
 

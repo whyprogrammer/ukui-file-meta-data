@@ -45,13 +45,10 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_search_module(POPPLER REQUIRED poppler-qt5)
 pkg_search_module(UCHARDET REQUIRED IMPORTED_TARGET uchardet)
+pkg_search_module(AVCODEC REQUIRED libavcodec)
+pkg_search_module(AVFORMAT REQUIRED libavformat)
+pkg_search_module(AVUTIL REQUIRED libavutil)
 
-find_package(FFmpeg 57.48 COMPONENTS AVCODEC)
-find_package(FFmpeg 57.40 COMPONENTS AVFORMAT)
-find_package(FFmpeg 55.27 COMPONENTS AVUTIL)
-set_package_properties(FFmpeg PROPERTIES DESCRIPTION "Video Tag reader"
-                       URL "https://ffmpeg.org/" TYPE OPTIONAL
-                       PURPOSE "Support for video metadata")
 set(CMAKECONFIG_INSTALL_DIR "/usr/include/Ukui-File-Meta-Data")
 include(CMakePackageConfigHelpers)
 configure_package_config_file(

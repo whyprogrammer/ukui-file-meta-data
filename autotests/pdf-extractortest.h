@@ -1,3 +1,10 @@
+/*
+    SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
+    SPDX-FileCopyrightText: 2022 kirito <baijunjie@kylinos.cn>
+
+    SPDX-License-Identifier: LGPL-2.1-or-later
+*/
+
 #ifndef PDFEXTRACTORTEST_H
 #define PDFEXTRACTORTEST_H
 
