@@ -18,21 +18,27 @@
  * Authors: baijunjie <baijunjie@kylinos.cn>
  *
  */
-#ifndef OFFICEEXTRACTORTEST_H
-#define OFFICEEXTRACTORTEST_H
+#ifndef TEXTEXTRACTOR_H
+#define TEXTEXTRACTOR_H
 
-#include <QObject>
+#include "extractor-plugin.h"
 
 namespace UkuiFileMetaData {
 
-class OfficeExtractorTest : public QObject
+class TextExtractor : public ExtractorPlugin
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.ukui.ukuifilemetadata.ExtractorPlugin"
+                      FILE "text-extractor.json")
+    Q_INTERFACES(UkuiFileMetaData::ExtractorPlugin)
 
-private Q_SLOTS:
-    void testContent();
-    void testContent_data();
+public:
+    explicit TextExtractor(QObject *parent = nullptr);
+    void extract(ExtractionResult *result) override;
+    QStringList mimetypes() const override;
+
+    friend class TextExtractorTest;
 };
 }
 
-#endif // OFFICEEXTRACTORTEST_H
+#endif // TEXTEXTRACTOR_H

@@ -18,21 +18,30 @@
  * Authors: baijunjie <baijunjie@kylinos.cn>
  *
  */
-#ifndef OFFICEEXTRACTORTEST_H
-#define OFFICEEXTRACTORTEST_H
+#ifndef PDFEXTRACTOR_H
+#define PDFEXTRACTOR_H
 
-#include <QObject>
+#include "extractor-plugin.h"
+
+#include <poppler-qt5.h>
 
 namespace UkuiFileMetaData {
 
-class OfficeExtractorTest : public QObject
+class PdfExtractor : public ExtractorPlugin
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.ukui.ukuifilemetadata.ExtractorPlugin"
+                      FILE "pdf-extractor.json")
+    Q_INTERFACES(UkuiFileMetaData::ExtractorPlugin)
 
-private Q_SLOTS:
-    void testContent();
-    void testContent_data();
+public:
+    PdfExtractor(QObject *parent = nullptr);
+    void extract(ExtractionResult *result) override;
+    QStringList mimetypes() const override;
+
+    friend class PdfExtractorTest;
 };
 }
 
-#endif // OFFICEEXTRACTORTEST_H
+
+#endif // PDFEXTRACTOR_H

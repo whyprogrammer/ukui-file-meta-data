@@ -1,0 +1,7 @@
+{
+    "Name"      : "TextExtractor",
+    "Id"        : "org.ukui.textextractor",
+    "MimeTypes" : {
+        "text/plain" : { "Version" : "0.0" }
+    }
+}

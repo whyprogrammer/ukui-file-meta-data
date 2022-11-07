@@ -18,21 +18,20 @@
  * Authors: baijunjie <baijunjie@kylinos.cn>
  *
  */
-#ifndef OFFICEEXTRACTORTEST_H
-#define OFFICEEXTRACTORTEST_H
+#ifndef TEXTEXTRACTORTEST_H
+#define TEXTEXTRACTORTEST_H
 
 #include <QObject>
 
 namespace UkuiFileMetaData {
 
-class OfficeExtractorTest : public QObject
+class TextExtractorTest : public QObject
 {
     Q_OBJECT
 
 private Q_SLOTS:
-    void testContent();
-    void testContent_data();
+    void test();
 };
 }
 
-#endif // OFFICEEXTRACTORTEST_H
+#endif // TEXTEXTRACTORTEST_H

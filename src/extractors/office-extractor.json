@@ -1,8 +1,8 @@
 {
-    "Type" : "UKUI_FILE_META_DATA_EXTRACTOR",
-    "Version" : "1.0.0",
-    "Name" : "OfficeExtractor",
-    "Id" :   "org.ukui.officeextractor",
+    "Type"      : "UKUI_FILE_META_DATA_EXTRACTOR",
+    "Version"   : "1.0.0",
+    "Name"      : "OfficeExtractor",
+    "Id"        : "org.ukui.officeextractor",
     "MimeTypes" : {
         "application/wps-office.doc"       : { "Version" : "0.0" },
         "application/wps-office.dot"       : { "Version" : "0.0" },

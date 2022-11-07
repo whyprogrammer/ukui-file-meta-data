@@ -6,7 +6,7 @@ set(CMAKE_INSTALL_PREFIX)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core LinguistTools REQUIRED)
-
+message("====" ${CMAKE_INSTALL_FULL_LIBDIR})
 set(PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/ukui-file-meta-data/plugins")
 add_definitions(
     -DPLUGIN_INSTALL_DIR=\"${PLUGIN_INSTALL_DIR}\"
@@ -15,7 +15,6 @@ add_definitions(
 #add_compile_definitions(PLUGIN_INSTALL_DIR=${CMAKE_INSTALL_FULL_LIBDIR}/ukui-file-meta-data/plugins)
 add_compile_definitions(EXTRACTOR_PLUGIN_IFACE_VERSION="1.0.0")
 
-message(${PLUGIN_INSTALL_DIR})
 
 set(TS_FILES UkuiFileMetaData_zh_CN.ts)
 
@@ -43,10 +42,15 @@ set(UkuiFileMetaData_SRCS
 #    format-strings.cpp
     )
 
-add_library(UkuiFileMetaData
+add_library(UkuiFileMetaData SHARED
     ${UkuiFileMetaData_SRCS}
 )
 
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/${PROJECT_NAME}.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/ukui-file-meta-data.pc
+    @ONLY
+)
 target_link_libraries(UkuiFileMetaData PUBLIC Qt${QT_VERSION_MAJOR}::Core)
 
 target_compile_definitions(UkuiFileMetaData PRIVATE UKUIFILEMETADATA_LIBRARY)
@@ -58,3 +62,23 @@ else()
 endif()
 
 add_subdirectory(extractors)
+
+install(
+        FILES ${CMAKE_CURRENT_BINARY_DIR}/ukui-file-meta-data.pc
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
+
+set_target_properties(UkuiFileMetaData PROPERTIES
+    VERSION ${VERSION}
+    SOVERSION "0"
+    OUTPUT_NAME ukuifilemetadata
+)
+
+install(
+    TARGETS UkuiFileMetaData
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    )
+
+install(
+    FILES ${HEADERS}
+    DESTINATION "include/ukui-file-meta-data" COMPONENT Devel)
