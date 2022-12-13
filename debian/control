@@ -1,4 +1,4 @@
-Source: ukui-file-meta-data
+Source: ukui-filemetadata
 Section: utils
 Priority: optional
 Maintainer: baijunjie <baijunjie@kylinos.cn>
@@ -18,15 +18,25 @@ Homepage: https://www.ukui.org/
 #Vcs-Browser: https://salsa.debian.org/debian/ukui-file-meta-data
 #Vcs-Git: https://salsa.debian.org/debian/ukui-file-meta-data.git
 
-Package: ukui-file-meta-data
+Package: libukui-filemetadata1
+Section: libs
 Architecture: any
 Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Description: The file metadata of UKUI desktop environment.
+         ${shlibs:Depends},
+Description: The file metadata utils of UKUI desktop environment.
 
-Package: ukui-file-meta-data-dev
+Package: libukui-filemetadata-dev
+Section: libdevel
 Architecture: any
-Section: devel
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Description: The file metadata of UKUI desktop environment(development files).
+Depends: libukui-filemetadata1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: The file metadata utils of UKUI desktop environment(development files).
+
+Package: libukui-filemetadata-bin
+Architecture: any
+Depends: libukui-filemetadata1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: library for extracting and writing file metadata
+ This package contains the ukui-filemetadata plugins.

@@ -1,4 +1,10 @@
-ukui-file-meta-data (3.1-1.0.0+0726) v101; urgency=medium
+ukui-filemetadata (3.22.0.0) yangtze; urgency=medium
+
+  * test
+
+ -- zhangpengfei <zhangpengfei@kylinos.cn>  Mon, 26 Dec 2022 14:42:01 +0800
+
+ukui-filemetadata (3.1-1.0.0+0726) v101; urgency=medium
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 

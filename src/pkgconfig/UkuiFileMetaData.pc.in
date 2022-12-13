@@ -1,6 +1,6 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=${prefix}
-libdir=${prefix}/lib/x86_64-linux-gnu/ukui-file-meta-data
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
 includedir=${prefix}/include/ukui-file-meta-data
 
 Name: ukui-file-meta-data

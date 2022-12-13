@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 3.14)
 
 project(UkuiFileMetaData LANGUAGES CXX)
+include(GNUInstallDirs)
 
-set(CMAKE_INSTALL_PREFIX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core LinguistTools REQUIRED)
-message("====" ${CMAKE_INSTALL_FULL_LIBDIR})
+
 set(PLUGIN_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/ukui-file-meta-data/plugins")
 add_definitions(
     -DPLUGIN_INSTALL_DIR=\"${PLUGIN_INSTALL_DIR}\"
@@ -70,15 +72,15 @@ install(
 
 set_target_properties(UkuiFileMetaData PROPERTIES
     VERSION ${VERSION}
-    SOVERSION "0"
+    SOVERSION "1"
     OUTPUT_NAME ukuifilemetadata
 )
-
 install(
     TARGETS UkuiFileMetaData
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    )
+)
 
 install(
     FILES ${HEADERS}
-    DESTINATION "include/ukui-file-meta-data" COMPONENT Devel)
+    DESTINATION "include/ukui-file-meta-data"
+)
