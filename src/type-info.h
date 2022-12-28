@@ -1,24 +1,25 @@
 /*
     SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
+    SPDX-FileCopyrightText: 2022 iaom <zhangpengfei@kylinos.cn>
 
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
-#ifndef KFILEMETADATA_TYPEINFO_H
-#define KFILEMETADATA_TYPEINFO_H
+#ifndef UKUIFILEMETADATA_TYPE_INFO_H
+#define UKUIFILEMETADATA_TYPE_INFO_H
 
 #include "types.h"
-#include "kfilemetadata_export.h"
+#include "ukui-file-meta-data_global.h"
 #include <QString>
 #include <memory>
 
-namespace KFileMetaData {
+namespace UkuiFileMetaData {
 
 class TypeInfoPrivate;
 /**
  * \class TypeInfo typeinfo.h <KFileMetaData/TypeInfo>
  */
-class KFILEMETADATA_EXPORT TypeInfo
+class UKUIFILEMETADATA_EXPORT TypeInfo
 {
 public:
     TypeInfo(Type::Type type);
@@ -27,13 +28,6 @@ public:
 
     TypeInfo& operator=(const TypeInfo& rhs);
 
-#if KFILEMETADATA_ENABLE_DEPRECATED_SINCE(5, 91)
-    /*
-     * @deprecated since 5.91 Use TypeInfo::operator==() const instead.
-     */
-KFILEMETADATA_DEPRECATED_VERSION(5, 91, "Use TypeInfo::operator==() const instead")
-    bool operator==(const TypeInfo& rhs);
-#endif
     /*
      * @since 5.91
      */
@@ -65,4 +59,4 @@ private:
 };
 }
 
-#endif // KFILEMETADATA_TYPEINFO_H
+#endif // UKUIFILEMETADATA_TYPE_INFO_H

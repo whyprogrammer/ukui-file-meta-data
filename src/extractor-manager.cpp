@@ -70,7 +70,6 @@ void ExtractorManagerPrivate::findExtractors()
 
 QList<Extractor *> ExtractorManagerPrivate::getExtractors(const QString &mimetype)
 {
-    qDebug() << m_mimeExtractors;
     QList<Extractor*> extractors = m_mimeExtractors.values(mimetype);
 
     if (extractors.isEmpty()) {

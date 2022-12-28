@@ -27,14 +27,18 @@ set(HEADERS
     extraction-result.h
     embedded-image-data.h
     types.h
+    type-info.h
     properties.h
     extractor.h
     mime-utils.h
-    )
+    simple-extraction-result.h
+    property-info.h
+)
 
 set(UkuiFileMetaData_SRCS
     extraction-result.cpp
     embedded-image-data.cpp
+    type-info.cpp
     extractor.cpp
     extractor-plugin.cpp
     extractor-manager.cpp
@@ -42,7 +46,7 @@ set(UkuiFileMetaData_SRCS
     simple-extraction-result.cpp
     property-info.cpp
 #    format-strings.cpp
-    )
+)
 
 add_library(UkuiFileMetaData SHARED
     ${UkuiFileMetaData_SRCS}

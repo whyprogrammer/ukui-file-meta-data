@@ -4,13 +4,12 @@
     SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
-#include "typeinfo.h"
+#include "type-info.h"
+#include <QObject>
 
-#include <KLocalizedString>
+using namespace UkuiFileMetaData;
 
-using namespace KFileMetaData;
-
-class KFileMetaData::TypeInfoPrivate
+class UkuiFileMetaData::TypeInfoPrivate
 {
 public:
     Type::Type type;
@@ -31,47 +30,47 @@ TypeInfo::TypeInfo(Type::Type type)
 
     case Type::Archive:
         d->name = QStringLiteral("Archive");
-        d->displayName = i18nc("@label", "Archive");
+        d->displayName = QObject::tr("Archive");
         break;
 
     case Type::Audio:
         d->name = QStringLiteral("Audio");
-        d->displayName = i18nc("@label", "Audio");
+        d->displayName = QObject::tr("Audio");
         break;
 
     case Type::Document:
         d->name = QStringLiteral("Document");
-        d->displayName = i18nc("@label", "Document");
+        d->displayName = QObject::tr("Document");
         break;
 
     case Type::Image:
         d->name = QStringLiteral("Image");
-        d->displayName = i18nc("@label", "Image");
+        d->displayName = QObject::tr("Image");
         break;
 
     case Type::Presentation:
         d->name = QStringLiteral("Presentation");
-        d->displayName = i18nc("@label", "Presentation");
+        d->displayName = QObject::tr("Presentation");
         break;
 
     case Type::Spreadsheet:
         d->name = QStringLiteral("Spreadsheet");
-        d->displayName = i18nc("@label", "Spreadsheet");
+        d->displayName = QObject::tr("Spreadsheet");
         break;
 
     case Type::Text:
         d->name = QStringLiteral("Text");
-        d->displayName = i18nc("@label", "Text");
+        d->displayName = QObject::tr("Text");
         break;
 
     case Type::Video:
         d->name = QStringLiteral("Video");
-        d->displayName = i18nc("@label", "Video");
+        d->displayName = QObject::tr("Video");
         break;
 
     case Type::Folder:
         d->name = QStringLiteral("Folder");
-        d->displayName = i18nc("@label", "Folder");
+        d->displayName = QObject::tr("Folder");
         break;
     }
 }
@@ -88,13 +87,6 @@ TypeInfo& TypeInfo::operator=(const TypeInfo& rhs)
     *d = *rhs.d;
     return *this;
 }
-
-#if KFILEMETADATA_BUILD_DEPRECATED_SINCE(5, 91)
-bool TypeInfo::operator==(const TypeInfo& rhs)
-{
-    return d->type == rhs.d->type && d->name == rhs.d->name && d->displayName == rhs.d->displayName;
-}
-#endif
 
 bool TypeInfo::operator==(const TypeInfo& rhs) const
 {

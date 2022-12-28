@@ -51,7 +51,9 @@ install(
 
 add_library(ukuifilemetadata_textextractor MODULE text-extractor.cpp)
 target_link_libraries(ukuifilemetadata_textextractor
-    UkuiFileMetaData)
+    UkuiFileMetaData
+    ${UCHARDET_LIBRARIES}
+)
 set_target_properties(ukuifilemetadata_textextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
 install(
     TARGETS ukuifilemetadata_textextractor
@@ -63,7 +65,9 @@ install(
 
 add_library(ukuifilemetadata_pdfextractor MODULE pdf-extractor.cpp)
 target_link_libraries(ukuifilemetadata_pdfextractor
-    UkuiFileMetaData)
+    UkuiFileMetaData
+    ${POPPLER_LIBRARIES}
+)
 set_target_properties(ukuifilemetadata_pdfextractor PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/ukuifilemetadata")
 install(
     TARGETS ukuifilemetadata_pdfextractor
