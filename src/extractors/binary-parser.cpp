@@ -4486,7 +4486,7 @@ static ULONG ulReadLong(FILE *pFile, ULONG ulOffset) {
     UCHAR	aucBytes[4];
 
     if(!bReadBytes(aucBytes, 4, ulOffset, pFile)) {
-        return -1;
+        return ULONG_MAX;
     }
     return ulGetLong(0, aucBytes);
 } /* end of ulReadLong */
@@ -4745,12 +4745,13 @@ bool bCreateSmallBlockList(ULONG ulStartblock, const ULONG *aulBBD, size_t tBBDL
 
     if(tSmallBlockListLen == 0) {
         /* There is no small block list */
-        aulSmallBlockList = NULL;
         return true;
     }
 
     /* Create the small block list */
     tSize = tSmallBlockListLen * sizeof(ULONG);
+    xfree(aulSmallBlockList);
+    aulSmallBlockList = NULL;
     aulSmallBlockList = (ULONG*)xmalloc(tSize);
     for(iIndex = 0, ulTmp = ulStartblock;
             iIndex < (int)tBBDLen && ulTmp != END_OF_CHAIN;
@@ -4979,7 +4980,7 @@ bool KBinaryParser::read8DocText(FILE *pFile, const ppsInfoType *pPPS,
                 } else {
                     //need more format document
                     ptaucBytes = (UCHAR*)xfree((void*)ptaucBytes);
-                    qWarning() << "Parser error:" << m_strFileName;
+//                    qWarning() << "Parser error:" << m_strFileName;
 //                    content.append(QString::fromStdString((char*)ptaucBytes).replace("\r",""));
 //                    ptaucBytes = (UCHAR*)xfree((void*)ptaucBytes);
                 }
@@ -5057,15 +5058,19 @@ int KBinaryParser:: readSSTRecord(readDataParam &rdParam, ppsInfoType PPS_info, 
 
             if(usOthTxtLen > 0) {
                 memset(chTemp, 0, MAX_BUFF_SIZE);
-                if(readData(rdParam, chTemp, ulOff, usOthTxtLen) != 0)
+                if(readData(rdParam, chTemp, ulOff, usOthTxtLen) != 0) {
+                    chData = (UCHAR*)xfree((void*)chData);
                     return -1;
+                }
                 memcpy(chData + usIdf, chTemp, usOthTxtLen);
             }
             if(bTemp)
                 usPartLen --;
         } else {
-            if(readData(rdParam, chData, ulOff + ulNextOff, ustotalLen) != 0)
+            if(readData(rdParam, chData, ulOff + ulNextOff, ustotalLen) != 0) {
+                chData = (UCHAR*)xfree((void*)chData);
                 break;
+            }
         }
 
         if(eRrd.bUni) {
@@ -5204,8 +5209,11 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
         iToGo -= 127;
     }
 
-    if(!bGetBBD(pFile, aulBbdList, tNumBbdBlocks, aulBBD, tBBDLen))
+    if(!bGetBBD(pFile, aulBbdList, tNumBbdBlocks, aulBBD, tBBDLen)) {
+        xfree(aulBbdList);
+        xfree(aulBBD);
         return -1;
+    }
 
     aulBbdList = (ULONG*)xfree(aulBbdList);
     /* Small Block Depot */
@@ -5217,14 +5225,19 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
             iIndex++, ulTmp = aulBBD[ulTmp]) {
         if(ulTmp >= (ULONG)tBBDLen) {
             qWarning("The Big Block Depot is damaged");
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
         }
 
         aulSbdList[iIndex] = ulTmp;
     }
 
-    if(!bGetSBD(pFile, aulSbdList, tBBDLen, aulSBD, tSBDLen))
+    if(!bGetSBD(pFile, aulSbdList, tBBDLen, aulSBD, tSBDLen)) {
+        aulSBD = (ULONG*)xfree(aulSBD);
+        aulBBD = (ULONG*)xfree(aulBBD);
         return -1;
+    }
 
 
     aulSbdList = (ULONG*)xfree(aulSbdList);
@@ -5232,26 +5245,38 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
     for(tRootListLen = 0, ulTmp = ulRootStartblock;
             tRootListLen < tBBDLen && ulTmp != END_OF_CHAIN;
             tRootListLen++, ulTmp = aulBBD[ulTmp]) {
-        if(ulTmp >= (ULONG)tBBDLen)
+        if(ulTmp >= (ULONG)tBBDLen) {
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
+        }
 
     }
-    if(tRootListLen == 0)
+    if(tRootListLen == 0) {
+        aulSBD = (ULONG*)xfree(aulSBD);
+        aulBBD = (ULONG*)xfree(aulBBD);
         return -1;
+    }
 
     aulRootList = (ULONG*)xcalloc(tRootListLen, sizeof(ULONG));
     for(iIndex = 0, ulTmp = ulRootStartblock;
             iIndex < (int)tBBDLen && ulTmp != END_OF_CHAIN;
             iIndex++, ulTmp = aulBBD[ulTmp]) {
-        if(ulTmp >= (ULONG)tBBDLen)
+        if(ulTmp >= (ULONG)tBBDLen) {
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
+        }
 
         aulRootList[iIndex] = ulTmp;
     }
     bSuccess = bGetPPS(pFile, aulRootList, tRootListLen, &PPS_info);
     aulRootList = (ULONG*)xfree(aulRootList);
-    if(!bSuccess)
+    if(!bSuccess) {
+        aulSBD = (ULONG*)xfree(aulSBD);
+        aulBBD = (ULONG*)xfree(aulBBD);
         return -1;
+    }
 
     rdPara readParam;
     readParam.pFile = pFile;
@@ -5262,8 +5287,11 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
         readParam.ulStBlk = PPS_info.tWordDocument.ulSB;
         UCHAR	aucHeader[HEADER_SIZE];
         /* Small block list */
-        if(!bCreateSmallBlockList(ulSBLstartblock, aulBBD, tBBDLen))
+        if(!bCreateSmallBlockList(ulSBLstartblock, aulBBD, tBBDLen)) {
+            aulSBD = (ULONG*)xfree(aulSBD);
+            readParam.ulBBd = (ULONG*)xfree(readParam.ulBBd);
             return -1;
+        }
 
         if(PPS_info.tWordDocument.ulSize < MIN_SIZE_FOR_BBD_USE) {
             readParam.ulBBd = aulSBD;
@@ -5271,8 +5299,11 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
             readParam.usBlkSize = SMALL_BLOCK_SIZE;
         }
 
-        if(readData(readParam, aucHeader, 0, HEADER_SIZE) != 0)
+        if(readData(readParam, aucHeader, 0, HEADER_SIZE) != 0) {
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
+        }
 
         usIdent = usGetWord(0x00, aucHeader);
 
@@ -5281,8 +5312,11 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
                 usIdent != 0xa5dc &&	/* Word 6 & 7 */
                 usIdent != 0xa5ec &&	/* Word 7 & 97 & 98 */
                 usIdent != 0xa697 &&	/* Word 7 for oriental languages */
-                usIdent != 0xa699)	/* Word 7 for oriental languages */
+                usIdent != 0xa699) {    /* Word 7 for oriental languages */
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
+        }
 
         /* Get the status flags from the header */
         usDocStatus = usGetWord(0x0a, aucHeader);
@@ -5299,8 +5333,11 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
         readParam.ulStBlk = PPS_info.tWorkBook.ulSB;
         UCHAR aucHeader[4];
         ulong ulOff = 0;
-        if(readData(readParam, aucHeader, 0, 8) != 0)
+        if(readData(readParam, aucHeader, 0, 8) != 0) {
+            aulSBD = (ULONG*)xfree(aulSBD);
+            aulBBD = (ULONG*)xfree(aulBBD);
             return -1;
+        }
         ulOff += 4;
         USHORT usType = usGetWord(0x00, aucHeader);
 
@@ -5325,6 +5362,8 @@ int KBinaryParser::InitDocOle(FILE* pFile, long lFilesize, QString &content) {
     } else {
         qWarning() << "Unsupport doc type:" << m_strFileName;
     }
+    aulSBD = (ULONG*)xfree(aulSBD);
+    aulBBD = (ULONG*)xfree(aulBBD);
     return 0;
 }
 
@@ -5347,7 +5386,10 @@ KBinaryParser::KBinaryParser(QObject *parent)
 }
 
 KBinaryParser::~KBinaryParser()
-{}
+{
+    xfree(aulSmallBlockList);
+    aulSmallBlockList = NULL;
+}
 
 bool KBinaryParser::RunParser(QString strFile, QString &content) {
     FILE* pFile = fopen(strFile.toLocal8Bit().data(), "rb");
