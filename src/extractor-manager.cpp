@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QMimeDatabase>
 #include "extractor.h"
+#include "ukui-file-metadata-config.h"
 
 using namespace UkuiFileMetaData;
 

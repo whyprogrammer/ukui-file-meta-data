@@ -9,7 +9,7 @@
 #ifndef UKUIFILEMETADATA_EMBEDDEDIMAGEDATA_H
 #define UKUIFILEMETADATA_EMBEDDEDIMAGEDATA_H
 
-#include "ukui-file-meta-data_global.h"
+#include "ukui-file-metadata_global.h"
 #include <QByteArray>
 #include <QFlags>
 #include <QMap>

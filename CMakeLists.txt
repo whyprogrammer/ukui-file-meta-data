@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.14)
+project(ukui-file-metadata LANGUAGES CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -7,9 +8,6 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(VERSION "1.0.0")
-project(UkuiFileMetaData VERSION ${VERSION})
 
 include(FeatureSummary)
 include(GNUInstallDirs)
@@ -49,13 +47,6 @@ pkg_search_module(AVCODEC REQUIRED libavcodec)
 pkg_search_module(AVFORMAT REQUIRED libavformat)
 pkg_search_module(AVUTIL REQUIRED libavutil)
 
-set(CMAKECONFIG_INSTALL_DIR "/usr/include/Ukui-File-Meta-Data")
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-                     "${CMAKE_CURRENT_SOURCE_DIR}/UkuiFileMetaDataConfig.cmake.in"
-                     "${CMAKE_CURRENT_BINARY_DIR}/UkuiFileMetaDataConfig.cmake"
-                     INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
-                   )
 enable_testing()
 add_subdirectory(src)
 if (BUILD_TESTING)

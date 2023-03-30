@@ -8,7 +8,7 @@
 #ifndef UKUIFILEMETADATA_EXTRACTOR_H
 #define UKUIFILEMETADATA_EXTRACTOR_H
 
-#include "ukui-file-meta-data_global.h"
+#include "ukui-file-metadata_global.h"
 #include <memory>
 #include <QStringList>
 #include <QVariantMap>

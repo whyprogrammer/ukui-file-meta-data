@@ -1,12 +1,10 @@
 Source: ukui-filemetadata
 Section: utils
 Priority: optional
-Maintainer: baijunjie <baijunjie@kylinos.cn>
+Maintainer: zhangpengfei <zhangpengfei@kylinos.cn>
 Build-Depends: debhelper-compat (= 12),
                pkgconf,
-               libgsettings-qt-dev,
                qtbase5-dev,
-               qt5-qmake,
                qtchooser,
                qtscript5-dev,
                qttools5-dev-tools,
@@ -15,28 +13,28 @@ Build-Depends: debhelper-compat (= 12),
                libpoppler-qt5-dev
 Standards-Version: 4.5.0
 Homepage: https://www.ukui.org/
-#Vcs-Browser: https://salsa.debian.org/debian/ukui-file-meta-data
-#Vcs-Git: https://salsa.debian.org/debian/ukui-file-meta-data.git
+Vcs-Git:  https://gitee.com/openkylin/ukui-file-meta-data.git
+Vcs-Browser: https://gitee.com/openkylin/ukui-file-meta-data
 
-Package: libukui-filemetadata1
+Package: libukui-file-metadata1
 Section: libs
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
 Description: The file metadata utils of UKUI desktop environment.
 
-Package: libukui-filemetadata-dev
+Package: libukui-file-metadata-dev
 Section: libdevel
 Architecture: any
-Depends: libukui-filemetadata1 (= ${binary:Version}),
+Depends: libukui-file-metadata1 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends},
 Description: The file metadata utils of UKUI desktop environment(development files).
 
-Package: libukui-filemetadata-bin
+Package: libukui-file-metadata-bin
 Architecture: any
-Depends: libukui-filemetadata1 (= ${binary:Version}),
+Depends: libukui-file-metadata1 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends},
 Description: library for extracting and writing file metadata
- This package contains the ukui-filemetadata plugins.
+ This package contains the ukui-file-metadata plugins.

@@ -10,7 +10,7 @@
 #define UKUIEMETADATA_MIMEUTILS
 
 #include <QMimeDatabase>
-#include "ukui-file-meta-data_global.h"
+#include "ukui-file-metadata_global.h"
 
 
 namespace UkuiFileMetaData

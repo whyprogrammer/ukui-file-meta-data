@@ -12,7 +12,7 @@
 #include <QStringList>
 #include <QDateTime>
 
-#include "ukui-file-meta-data_global.h"
+#include "ukui-file-metadata_global.h"
 #include "extraction-result.h"
 
 namespace UkuiFileMetaData

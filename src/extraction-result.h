@@ -13,7 +13,7 @@
 
 #include <memory>
 
-#include "ukui-file-meta-data_global.h"
+#include "ukui-file-metadata_global.h"
 #include "embedded-image-data.h"
 #include "properties.h"
 #include "types.h"
