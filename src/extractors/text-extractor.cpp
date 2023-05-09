@@ -52,7 +52,7 @@ void TextExtractor::extract(ExtractionResult *result)
     }
 
     result->addType(Type::Text);
-    QString textcontent;
+    QString textContent;
     QByteArray encodedString = file.read(MAX_CONTENT_LENGTH);
 
     uchardet_t chardet = uchardet_new();
@@ -62,7 +62,7 @@ void TextExtractor::extract(ExtractionResult *result)
     uchardet_data_end(chardet);
     const char *codec = uchardet_get_charset(chardet);
 
-    if (QTextCodec::codecForName(codec) == 0)
+    if (QTextCodec::codecForName(codec) == nullptr)
         qWarning() << "Unsupported Text encoding format" << result->inputUrl() << QString::fromLocal8Bit(codec);
 
     QTextStream stream(encodedString, QIODevice::ReadOnly);
@@ -70,16 +70,16 @@ void TextExtractor::extract(ExtractionResult *result)
     uchardet_delete(chardet);
 
     int lines = 0;
-    textcontent = stream.readLine();
-    while (!textcontent.isNull()) {
-        result->append(textcontent);
-        textcontent = stream.readLine();
+    textContent = stream.readLine();
+    while (!textContent.isNull()) {
+        result->append(textContent);
+        textContent = stream.readLine();
         lines++;
     }
     result->add(Property::LineCount, lines);
     file.close();
     encodedString.clear();
-    chardet = NULL;
+    chardet = nullptr;
     stream.flush();
 }
 

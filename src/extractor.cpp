@@ -58,7 +58,7 @@ Extractor::Extractor()
 
 Extractor::~Extractor() = default;
 
-Extractor::Extractor(Extractor&& other)
+Extractor::Extractor(Extractor&& other) noexcept
 {
     d = std::move(other.d);
 }

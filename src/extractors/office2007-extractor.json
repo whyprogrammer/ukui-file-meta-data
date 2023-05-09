@@ -1,5 +1,5 @@
 {
-    "Type"      : "UKUI_FILE_META_DATA_EXTRACTOR",
+    "Type"      : "UKUI_FILE_METADATA_EXTRACTOR",
     "Version"   : "1.0.0",
     "Name"      : "Office2007Extractor",
     "Id"        : "org.ukui.office2007extractor",

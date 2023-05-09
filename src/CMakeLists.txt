@@ -13,39 +13,38 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Core LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core LinguistTools REQUIRED)
 
 set(PLUGIN_INSTALL_DIR "/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/ukui-file-metadata/plugins")
+set(EXTRACTOR_PLUGIN_IFACE_VERSION="1.0.0")
 configure_file (ukui-file-metadata-config.h.in ukui-file-metadata-config.h @ONLY)
-
-add_compile_definitions(EXTRACTOR_PLUGIN_IFACE_VERSION="1.0.0")
 
 set(TS_FILES ukui-file-metadata_zh_CN.ts)
 
 set(HEADERS
         ukui-file-metadata_global.h
-    extractor-manager.h
-    extractor-plugin.h
-    extraction-result.h
-    embedded-image-data.h
-    types.h
-    type-info.h
-    properties.h
-    extractor.h
-    mime-utils.h
-    simple-extraction-result.h
-    property-info.h
-)
+        extractor-manager.h
+        extractor-plugin.h
+        extraction-result.h
+        embedded-image-data.h
+        types.h
+        type-info.h
+        properties.h
+        extractor.h
+        mime-utils.h
+        simple-extraction-result.h
+        property-info.h
+        )
 
 set(ukui-file-metadata_SRCS
-    extraction-result.cpp
-    embedded-image-data.cpp
-    type-info.cpp
-    extractor.cpp
-    extractor-plugin.cpp
-    extractor-manager.cpp
-    mime-utils.cpp
-    simple-extraction-result.cpp
-    property-info.cpp
-#    format-strings.cpp
-)
+        extraction-result.cpp
+        embedded-image-data.cpp
+        type-info.cpp
+        extractor.cpp
+        extractor-plugin.cpp
+        extractor-manager.cpp
+        mime-utils.cpp
+        simple-extraction-result.cpp
+        property-info.cpp
+        #    format-strings.cpp
+        )
 
 add_library(ukui-file-metadata SHARED
     ${ukui-file-metadata_SRCS}

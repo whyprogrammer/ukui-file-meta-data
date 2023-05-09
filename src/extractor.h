@@ -37,7 +37,7 @@ class UKUIFILEMETADATA_EXPORT Extractor
     };
 
 public:
-    Extractor(Extractor&&);
+    Extractor(Extractor&&) noexcept ;
     virtual ~Extractor() noexcept;
 
     void extract(ExtractionResult* result);

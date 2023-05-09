@@ -1,5 +1,5 @@
 {
-    "Type" : "UKUI_FILE_META_DATA_EXTRACTOR",
+    "Type" : "UKUI_FILE_METADATA_EXTRACTOR",
     "Version" : "1.0.0",
     "Name" : "FFMpegExtractor",
     "Id" :   "org.ukui.ffmpegextractor",

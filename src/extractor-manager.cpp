@@ -32,21 +32,21 @@ void ExtractorManagerPrivate::findExtractors()
     QDir pluginsDir(PLUGIN_INSTALL_DIR);
     pluginsDir.setFilter(QDir::Files);
 
-    for(QString fileName: pluginsDir.entryList(QDir::Files)) {
+    for(const QString &fileName: pluginsDir.entryList(QDir::Files)) {
 
         QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
         QJsonObject metaData = pluginLoader.metaData().value("MetaData").toObject();
         QString type =metaData.value("Type").toString();
         QString version = metaData.value("Version").toString();
 
-        if(type == "UKUI_FILE_META_DATA_EXTRACTOR") {
+        if(type == "UKUI_FILE_METADATA_EXTRACTOR") {
             if(version != EXTRACTOR_PLUGIN_IFACE_VERSION) {
-                qWarning() << "UKUI_FILE_META_DATA_EXTRACTOR version check failed:" << fileName << "version:" << version << "iface version : " << EXTRACTOR_PLUGIN_IFACE_VERSION;
+                qWarning() << "UKUI_FILE_METADATA_EXTRACTOR version check failed:" << fileName << "version:" << version << "iface version : " << EXTRACTOR_PLUGIN_IFACE_VERSION;
                 continue;
             }
         }
         if(metaData.value("MimeTypes").isNull()) {
-            qWarning() << "UKUI_FILE_META_DATA_EXTRACTOR MimeTypes check failed:" << fileName << ", MimeTypes is null";
+            qWarning() << "UKUI_FILE_METADATA_EXTRACTOR MimeTypes check failed:" << fileName << ", MimeTypes is null";
             continue;
         }
 
