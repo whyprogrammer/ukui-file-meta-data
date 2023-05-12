@@ -5,8 +5,8 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#ifndef _UKUIFILEMETADATA_EXTRACTIONRESULT_H
-#define _UKUIFILEMETADATA_EXTRACTIONRESULT_H
+#ifndef UKUIFILEMETADATA_EXTRACTIONRESULT_H
+#define UKUIFILEMETADATA_EXTRACTIONRESULT_H
 
 #include <QString>
 #include <QVariant>
@@ -17,11 +17,12 @@
 #include "embedded-image-data.h"
 #include "properties.h"
 #include "types.h"
+#include "thumbnail.h"
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 class ExtractionResultPrivate;
 /**
- * \class ExtractionResult extractionresult.h
+ * \class ExtractionResult extraction-result.h
  *
  * \brief The ExtractionResult class is where all the data extracted by
  * the indexer is saved. This class acts as a base class which should be
@@ -43,6 +44,7 @@ public:
         ExtractMetaData = 1,
         ExtractPlainText = 2,
         ExtractImageData = 4,
+        ExtractThumbnail = 5
     };
     /**
      * Stores a combination of #Flag values.
@@ -55,7 +57,7 @@ public:
      * which file the data should be extracted from and which data should
      * be extracted.
      */
-    ExtractionResult(const QString& url, const QString& mimetype = QString(), const Flags& flags = Flags{ExtractPlainText | ExtractMetaData});
+    explicit ExtractionResult(const QString& url, const QString& mimetype = QString(), const Flags& flags = Flags{ExtractPlainText | ExtractMetaData});
     ExtractionResult(const ExtractionResult& rhs);
     virtual ~ExtractionResult();
 
@@ -123,6 +125,16 @@ public:
      * \sa Flags::ExtractImageData
      */
     QMap<EmbeddedImageData::ImageType, QByteArray> imageData() const;
+    /**
+     * This function is called fot adding request for thumbnail extraction.
+     * @param request
+     */
+    void setThumbnailRequest(const ThumbnailRequest &request);
+    /**
+     * This function is called by the plugins.
+     * \p thumbnail The thumbnail to add
+     */
+    void addThumbnail(const Thumbnail &thumbnail);
 
 private:
     const std::unique_ptr<ExtractionResultPrivate> d;
@@ -132,4 +144,4 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(ExtractionResult::Flags)
 
 }
 
-#endif // _UKUIFILEMETADATA_EXTRACTIONRESULT_H
+#endif // UKUIFILEMETADATA_EXTRACTIONRESULT_H

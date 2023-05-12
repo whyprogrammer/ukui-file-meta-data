@@ -13,7 +13,7 @@
 #include <QString>
 #include <memory>
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 class TypeInfoPrivate;
 /**

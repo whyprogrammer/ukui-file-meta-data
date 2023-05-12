@@ -12,7 +12,7 @@
 #include <QMimeDatabase>
 #include <QDebug>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 ExtractorPlugin::ExtractorPlugin(QObject* parent): QObject(parent)
 {

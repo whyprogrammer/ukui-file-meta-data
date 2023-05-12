@@ -9,9 +9,9 @@
 
 #include <QLocale>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::PropertyInfoPrivate
+class UkuiFileMetadata::PropertyInfoPrivate
 {
 public:
     Property::Property prop;

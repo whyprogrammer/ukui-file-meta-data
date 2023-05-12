@@ -37,8 +37,8 @@ endif()
 
 # Dependencies
 set(REQUIRED_QT_VERSION 5.12.8)
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Gui REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_search_module(POPPLER REQUIRED poppler-qt5)

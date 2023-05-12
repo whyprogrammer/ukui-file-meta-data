@@ -16,7 +16,7 @@
 #include <QMetaType>
 #include <memory>
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 /**
  * \class EmbeddedImageData embeddedimagedata.h
@@ -70,7 +70,7 @@ private:
 
 }
 
-Q_DECLARE_METATYPE(UkuiFileMetaData::EmbeddedImageData::ImageType)
-Q_DECLARE_METATYPE(UkuiFileMetaData::EmbeddedImageData::ImageTypes)
+Q_DECLARE_METATYPE(UkuiFileMetadata::EmbeddedImageData::ImageType)
+Q_DECLARE_METATYPE(UkuiFileMetadata::EmbeddedImageData::ImageTypes)
 
 #endif // UKUIFILEMETADATA_EMBEDDEDIMAGEDATA_H

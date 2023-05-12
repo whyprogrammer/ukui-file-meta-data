@@ -10,7 +10,7 @@
 #include "pdf-extractor.h"
 #include <QDebug>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 const QStringList supportedMimeTypes = {
     QStringLiteral("application/pdf")

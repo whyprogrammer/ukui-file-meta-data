@@ -6,23 +6,25 @@
 
 #include "extraction-result.h"
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::ExtractionResultPrivate
+class UkuiFileMetadata::ExtractionResultPrivate
 {
 public:
-    QString url;
-    QString mimetype;
-    ExtractionResult::Flags flags;
-    QMap<EmbeddedImageData::ImageType, QByteArray> images;
+    QString m_url;
+    QString m_mimetype;
+    ExtractionResult::Flags m_flags;
+    QMap<EmbeddedImageData::ImageType, QByteArray> m_images;
+    ThumbnailRequest m_thumbnailRequest;
+    Thumbnail m_thumbnail;
 };
 
 ExtractionResult::ExtractionResult(const QString& url, const QString& mimetype, const Flags& flags)
     : d(new ExtractionResultPrivate)
 {
-    d->url = url;
-    d->mimetype = mimetype;
-    d->flags = flags;
+    d->m_url = url;
+    d->m_mimetype = mimetype;
+    d->m_flags = flags;
 }
 
 ExtractionResult::ExtractionResult(const ExtractionResult& rhs)
@@ -34,27 +36,36 @@ ExtractionResult::~ExtractionResult() = default;
 
 QString ExtractionResult::inputUrl() const
 {
-    return d->url;
+    return d->m_url;
 }
 
 QString ExtractionResult::inputMimetype() const
 {
-    return d->mimetype;
+    return d->m_mimetype;
 }
 
 ExtractionResult::Flags ExtractionResult::inputFlags() const
 {
-    return d->flags;
+    return d->m_flags;
 }
 
 void ExtractionResult::addImageData(QMap<EmbeddedImageData::ImageType, QByteArray>&& images)
 {
-    d->images = images;
+    d->m_images = images;
 }
 
 QMap<EmbeddedImageData::ImageType, QByteArray>
 ExtractionResult::imageData() const
 {
-    return d->images;
+    return d->m_images;
 }
 
+void ExtractionResult::setThumbnailRequest(const ThumbnailRequest &request)
+{
+    d->m_thumbnailRequest = request;
+}
+
+void ExtractionResult::addThumbnail(const Thumbnail &thumbnail)
+{
+    d->m_thumbnail = thumbnail;
+}

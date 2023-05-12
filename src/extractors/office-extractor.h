@@ -23,14 +23,14 @@
 
 #include "extractor-plugin.h"
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 class OfficeExtractor : public ExtractorPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.ukui.ukuifilemetadata.ExtractorPlugin"
                       FILE "office-extractor.json")
-    Q_INTERFACES(UkuiFileMetaData::ExtractorPlugin)
+    Q_INTERFACES(UkuiFileMetadata::ExtractorPlugin)
 public:
     explicit OfficeExtractor(QObject *parent = nullptr);
 

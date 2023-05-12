@@ -1,4 +1,4 @@
-# UkuiFileMetaData
+# UkuiFileMetadata
 ## 简介
 UkuiFileMetaData提供了文件元数据解析与用户自定义数据写入功能，其中读取部分结构与部分代码参考自KFileMetaData。为了满足ukui的个性化开发需求，我们在KFileMetaData的基础上做了部分修改与删减。
 ## 开发状态

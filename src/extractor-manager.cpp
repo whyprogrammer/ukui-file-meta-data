@@ -14,9 +14,9 @@
 #include "extractor.h"
 #include "ukui-file-metadata-config.h"
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::ExtractorManagerPrivate
+class UkuiFileMetadata::ExtractorManagerPrivate
 {
 public:
     QMultiHash<QString, Extractor*> m_mimeExtractors;
@@ -125,7 +125,7 @@ QList<Extractor*> ExtractorManager::fetchExtractors(const QString &mimetype) con
         if (ancestor == QLatin1String("application/octet-stream")) {
             continue;
         }
-        QList<Extractor*> plugins = d->getExtractors(ancestor);
+        plugins = d->getExtractors(ancestor);
         if (!plugins.isEmpty()) {
             qDebug() << "Using inherited mimetype" << ancestor <<  "for" << mimetype;
             return plugins;

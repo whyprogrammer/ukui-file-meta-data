@@ -15,7 +15,7 @@
 #include <QPluginLoader>
 #include "extractor-plugin.h"
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 class ExtractionResult;
 class ExtractorManager;

@@ -14,7 +14,7 @@
 
 #include <memory>
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 enum PropertiesMapType { MultiMap };
 
 class SimpleExtractionResultPrivate;

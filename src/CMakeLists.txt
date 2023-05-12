@@ -44,13 +44,14 @@ set(ukui-file-metadata_SRCS
         simple-extraction-result.cpp
         property-info.cpp
         #    format-strings.cpp
-        )
+        thumbnail.cpp
+        thumbnail.h)
 
 add_library(ukui-file-metadata SHARED
     ${ukui-file-metadata_SRCS}
 )
 
-target_link_libraries(ukui-file-metadata  PUBLIC Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(ukui-file-metadata  PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
 
 include(CMakePackageConfigHelpers)
 set(CMAKE_CONFIG_INSTALL_DIR "/usr/share/cmake/ukui-file-metadata")

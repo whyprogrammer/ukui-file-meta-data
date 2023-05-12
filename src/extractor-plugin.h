@@ -15,7 +15,7 @@
 #include "ukui-file-metadata_global.h"
 #include "extraction-result.h"
 
-namespace UkuiFileMetaData
+namespace UkuiFileMetadata
 {
 
 /**
@@ -97,6 +97,6 @@ private:
 };
 }
 
-Q_DECLARE_INTERFACE(UkuiFileMetaData::ExtractorPlugin, "org.ukui.ukuifilemetadata.ExtractorPlugin")
+Q_DECLARE_INTERFACE(UkuiFileMetadata::ExtractorPlugin, "org.ukui.ukuifilemetadata.ExtractorPlugin")
 
 #endif // _UKUIFILEMETADATA_EXTRACTOR_PLUGIN_H

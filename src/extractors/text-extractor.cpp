@@ -27,7 +27,7 @@
 
 #define MAX_CONTENT_LENGTH 20480000
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 const QStringList supportedMimeTypes = {
     QStringLiteral("text/plain")

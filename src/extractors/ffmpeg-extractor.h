@@ -11,7 +11,7 @@
 
 #include "extractor-plugin.h"
 
-namespace UkuiFileMetaData
+namespace UkuiFileMetadata
 {
 
 class FFmpegExtractor : public ExtractorPlugin
@@ -19,7 +19,7 @@ class FFmpegExtractor : public ExtractorPlugin
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.ukui.ukuifilemetadata.ExtractorPlugin"
                       FILE "ffmpeg-extractor.json")
-    Q_INTERFACES(UkuiFileMetaData::ExtractorPlugin)
+    Q_INTERFACES(UkuiFileMetadata::ExtractorPlugin)
 
 public:
     explicit FFmpegExtractor(QObject* parent = nullptr);

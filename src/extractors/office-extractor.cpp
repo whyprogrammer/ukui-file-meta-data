@@ -21,7 +21,7 @@
 #include "office-extractor.h"
 #include "binary-parser.h"
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 const QStringList supportedMimeTypes = {
     QStringLiteral("application/wps-office.doc"),    //2003word

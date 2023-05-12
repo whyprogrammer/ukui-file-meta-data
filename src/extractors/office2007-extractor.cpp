@@ -25,7 +25,7 @@
 #include <quazip5/quazipfile.h>
 #include <QXmlStreamReader>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 const QStringList supportedMimeTypes = {
     QStringLiteral("application/vnd.openxmlformats-officedocument.wordprocessingml.document"),

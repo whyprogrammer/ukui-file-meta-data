@@ -8,7 +8,7 @@
 #include "embedded-image-data.h"
 #include <QMimeDatabase>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 EmbeddedImageData::EmbeddedImageData()
 {

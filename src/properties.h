@@ -13,12 +13,12 @@
 #include <QMap>
 #include <QVariant>
 
-/** @file properties.h <UkuiFileMetaData/Properties> */
-namespace UkuiFileMetaData {
+/** @file properties.h <UkuiFileMetadata/Properties> */
+namespace UkuiFileMetadata {
 namespace Property {
 
 /**
- * @brief The Property enum contains all files property types that UkuiFileMetaData manipulates
+ * @brief The Property enum contains all files property types that UkuiFileMetadata manipulates
  *
  */
 enum Property {
@@ -359,8 +359,8 @@ enum Property {
 typedef QMap<Property::Property, QVariant> PropertyMap;
 using PropertyMultiMap = QMultiMap<Property::Property, QVariant>;
 
-} // namespace UkuiFileMetaData
+} // namespace UkuiFileMetadata
 
-Q_DECLARE_METATYPE(UkuiFileMetaData::Property::Property)
+Q_DECLARE_METATYPE(UkuiFileMetadata::Property::Property)
 
 #endif

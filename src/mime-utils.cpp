@@ -7,7 +7,7 @@
 
 #include "mime-utils.h"
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 namespace MimeUtils {
 
 QMimeType strictMimeType(const QString& filePath, const QMimeDatabase& db)
@@ -34,4 +34,4 @@ QMimeType strictMimeType(const QString& filePath, const QMimeDatabase& db)
     return contentMime;
 }
 
-}} // namespace UkuiFileMetaData::MimeUtils
+}} // namespace UkuiFileMetadata::MimeUtils

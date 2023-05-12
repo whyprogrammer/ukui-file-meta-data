@@ -8,7 +8,7 @@
 #ifndef UKUIFILEMETADATA_TYPES
 #define UKUIFILEMETADATA_TYPES
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 namespace Type {
 
 /**

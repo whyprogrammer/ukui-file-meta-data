@@ -26,7 +26,7 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 }
 #include <QDebug>
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
 FFmpegExtractor::FFmpegExtractor(QObject* parent)
     : ExtractorPlugin(parent)

@@ -16,11 +16,11 @@
 
 #include <memory>
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 class PropertyInfoPrivate;
 /**
- * \class PropertyInfo propertyinfo.h
+ * \class PropertyInfo property-info.h
  *
  * The PropertyInfo class can be used to obtain extra information
  * about any property. It is commonly used be indexers in order
@@ -32,7 +32,7 @@ class UKUIFILEMETADATA_EXPORT PropertyInfo : public QObject
     Q_OBJECT
 public:
     PropertyInfo();
-    PropertyInfo(Property::Property property);
+    explicit PropertyInfo(Property::Property property);
     PropertyInfo(const PropertyInfo& pi);
     ~PropertyInfo();
 
@@ -88,7 +88,7 @@ private:
 };
 
 } // namespace
-Q_DECLARE_METATYPE(UkuiFileMetaData::PropertyInfo)
+Q_DECLARE_METATYPE(UkuiFileMetadata::PropertyInfo)
 
 
 #endif // _UKUIFILEMETADATA_PROPERTYINFO_H

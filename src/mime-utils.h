@@ -1,5 +1,5 @@
 /*
-    This file is part of UkuiFileMetaData
+    This file is part of UkuiFileMetadata
     SPDX-FileCopyrightText: 2019 Stefan Brüns <stefan.bruens@rwth-aachen.de>
     SPDX-FileCopyrightText: 2019 iaom <zhangpengfei@kylinos.cn>
 
@@ -13,7 +13,7 @@
 #include "ukui-file-metadata_global.h"
 
 
-namespace UkuiFileMetaData
+namespace UkuiFileMetadata
 {
 namespace MimeUtils
 {

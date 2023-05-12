@@ -25,14 +25,14 @@
 
 #include <poppler-qt5.h>
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 
 class PdfExtractor : public ExtractorPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.ukui.ukuifilemetadata.ExtractorPlugin"
                       FILE "pdf-extractor.json")
-    Q_INTERFACES(UkuiFileMetaData::ExtractorPlugin)
+    Q_INTERFACES(UkuiFileMetadata::ExtractorPlugin)
 
 public:
     PdfExtractor(QObject *parent = nullptr);

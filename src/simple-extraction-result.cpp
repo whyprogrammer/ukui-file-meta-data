@@ -7,9 +7,9 @@
 
 #include "simple-extraction-result.h"
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::SimpleExtractionResultPrivate
+class UkuiFileMetadata::SimpleExtractionResultPrivate
 {
 public:
     PropertyMultiMap m_properties;

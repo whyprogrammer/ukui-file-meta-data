@@ -11,10 +11,10 @@
 #include <memory>
 #include "extractor.h"
 
-namespace UkuiFileMetaData {
+namespace UkuiFileMetadata {
 class ExtractorManagerPrivate;
 /**
- * @brief The ExtratorPluginManager class is a helper class which loads all the extrator plugins.
+ * @brief The ExtractorPluginManager class is a helper class which loads all the extractor plugins.
  *It can be used to fetch plugins based on a given mimetype.
  *\author iaom <zhangpengfei@kylinos.cn>
  */

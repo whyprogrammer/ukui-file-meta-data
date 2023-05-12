@@ -7,9 +7,9 @@
 #include "type-info.h"
 #include <QObject>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::TypeInfoPrivate
+class UkuiFileMetadata::TypeInfoPrivate
 {
 public:
     Type::Type type;

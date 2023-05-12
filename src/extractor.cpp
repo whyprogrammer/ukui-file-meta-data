@@ -9,9 +9,9 @@
 #include "extractor-plugin.h"
 #include <QDebug>
 
-using namespace UkuiFileMetaData;
+using namespace UkuiFileMetadata;
 
-class UkuiFileMetaData::ExtractorPrivate
+class UkuiFileMetadata::ExtractorPrivate
 {
 public:
     ~ExtractorPrivate() {
